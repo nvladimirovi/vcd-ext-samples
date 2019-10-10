@@ -7,10 +7,20 @@
                 "$source": "argv",
                 "index": 0
             },
-            "x-prompt": "What is your name?"
+            "x-prompt": "What is the name of your plugin?"
+        },
+        "vcdVersion": {
+            "type": "string",
+            "minLength": 3,
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "For which vCloud Director version?"
         }
     },
     "required": [
-        "name"
+        "name",
+        "vcdVersion"
     ]
 }

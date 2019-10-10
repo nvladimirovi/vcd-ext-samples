@@ -6,7 +6,9 @@ import { strings } from "@angular-devkit/core";
 // per file.
 export function pluginSeed(_options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    const sourceTemplates = url("../../templates");
+    const { vcdVersion } = _options;
+
+    const sourceTemplates = url(`../../templates/${vcdVersion}`);
     const sourceParametrizedTemplates = apply(sourceTemplates, [
       template({
         ..._options,
