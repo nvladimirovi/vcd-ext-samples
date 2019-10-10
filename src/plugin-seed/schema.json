@@ -1,0 +1,16 @@
+{
+    "properties": {
+        "name": {
+            "type": "string",
+            "minLength": 1,
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What is your name?"
+        }
+    },
+    "required": [
+        "name"
+    ]
+}
