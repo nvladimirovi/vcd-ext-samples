@@ -103,6 +103,39 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "build-clr": {
+          "builder": "@vcd/plugin-builders:plugin-builder",
+          "options": {
+            "vcdVersion": "10.2",
+            "modulePath": "src/plugins/clr/main/clarity-wrapper.module.ts#ClarityWrapperModule",
+            "outputPath": "dist/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "librariesConfig": {
+              "@clr/angular": {
+                "version": "0.13.11",
+                "scope": "runtime"
+              }
+            },
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "./src/plugins/clr/public",
+                "output": "/"
+              }
+            ],
+            "optimization": false,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "extractCss": false,
+            "namedChunks": false,
+            "aot": false,
+            "extractLicenses": false,
+            "vendorChunk": false,
+            "buildOptimizer": false
+          }
         }
       }
     },
