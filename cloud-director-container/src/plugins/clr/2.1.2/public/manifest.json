@@ -1,0 +1,23 @@
+{
+    "urn": "vmware:vcloud:clr:angular",
+    "name": "Clarity v2.1.2 Seeder",
+    "containerVersion": "10.2",
+    "manifestVersion": "2.0.0",
+    "version": "1.0.0",
+    "scope": ["service-provider"],
+    "permissions": [],
+    "description": "Plugin for seeding Clarity v2.1.2",
+    "vendor": "VMware",
+    "license": "BSD-2-Clause",
+    "link": "http://www.vmware.com",
+    "module": "ClarityWrapperModule",
+    "extensionPoints": [
+        {
+            "urn": "vmware:vcloud:seeder:clr:angular:2.1.2",
+            "type": "seeder",
+            "name": "Clarity v2.1.2 Seeder",
+            "description":"Plugin for seeding Clarity v2.1.2",
+            "module": "ClarityWrapperModule"
+        }
+    ]
+}
