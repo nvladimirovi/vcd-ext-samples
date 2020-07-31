@@ -1,0 +1,10 @@
+{
+  "name": "@vcd/clr-seed-0.13.11",
+  "version": "1.0.0",
+  "description": "Clarity Seed for v0.13.11",
+  "author": "VMware, Inc.",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "@clr/angular": "0.13.11"
+  }
+}
