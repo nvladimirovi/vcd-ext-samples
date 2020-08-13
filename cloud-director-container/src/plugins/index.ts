@@ -10,10 +10,10 @@ export class PluginRegistration {
     }
 
     get path(): string {
-        return this.module.split("#")[1];
+        return this.module.split('#')[1];
     }
-};
+}
 
 export const PLUGINS: PluginRegistration[] = [
-
+    new PluginRegistration('src/plugins/app', 'app.module#AppModule', 'Clarity Demo'),
 ];
