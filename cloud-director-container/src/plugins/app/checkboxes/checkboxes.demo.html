@@ -1,0 +1,233 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<form #testForm="ngForm">
+    <section class="form-block">
+        <label>Checkboxes</label>
+        <div class="form-group">
+            <label>Default/Stacked checkbox group</label>
+            <div class="checkbox">
+                <input type="checkbox" id="checkrads_1">
+                <label for="checkrads_1">Checkbox 1</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="checkrads_2" checked>
+                <label for="checkrads_2">Checkbox 2</label>
+            </div>
+            <div class="checkbox disabled">
+                <input type="checkbox" id="checkrads_3" disabled>
+                <label for="checkrads_3">A disabled and unchecked checkbox</label>
+            </div>
+            <div class="checkbox disabled">
+                <input type="checkbox" id="checkrads_4" disabled checked>
+                <label for="checkrads_4">A disabled and checked checkbox</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Inline checkbox group</label>
+            <div class="checkbox-inline">
+                <input type="checkbox" id="checkrads_5">
+                <label for="checkrads_5">Checkbox 1</label>
+            </div>
+            <div class="checkbox-inline">
+                <input type="checkbox" id="checkrads_6" checked>
+                <label for="checkrads_6">Checkbox 2</label>
+            </div>
+            <div class="checkbox-inline disabled">
+                <input type="checkbox" id="checkrads_7" disabled>
+                <label for="checkrads_7">A disabled and unchecked checkbox</label>
+            </div>
+            <div class="checkbox-inline disabled">
+                <input type="checkbox" id="checkrads_8" disabled checked>
+                <label for="checkrads_8">A disabled and checked checkbox</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Indeterminate Checkbox</label>
+            <div>
+                <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
+                    Clarity indeterminate checkbox
+                </clr-checkbox>
+                <div>
+                    <button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button">
+                        Toggle Indeterminate State
+                    </button>
+                </div>
+                <input type="checkbox"
+                       id="checkrads_10"
+                       [indeterminate]="nativeIndeterminateState">
+                <label for="checkrads_10">Native indeterminate checkbox</label>
+                <div>
+                    <b>NOTE:</b> Native checkbox elements must set indeterminate state with JavaScript.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Clarity Checkbox</label>
+            <clr-checkbox
+                type="checkbox" id="formCheckbox"
+                name="active"
+                [(ngModel)]="active">
+                Clarity Checkbox
+            </clr-checkbox>
+            <label>
+                State: {{active}}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Disabled Clarity Checkbox</label>
+            <clr-checkbox
+                type="checkbox" id="formCheckboxDisabled"
+                [clrDisabled]="true">
+                Clarity Checkbox
+            </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<form #form="ngForm" novalidate>
+    <section class="form-block">
+        <div class="form-group">
+            <label>With ngForm & ngModel</label>
+            <clr-checkbox
+                    name="termsCheckbox"
+                    id="checkrads_11"
+                    [clrInline]="true"
+                    [(ngModel)]="termsAgreement">
+                I agree to the terms and conditions. {{ form.value | json }}
+            </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<form>
+    <section class="form-block">
+        <div class="form-group">
+            <label>With a list of objects</label>
+            <clr-checkbox *ngFor="let item of list"
+                          [(clrChecked)]="item.running"
+                          [clrDisabled]="item.disabled">
+                {{ item.disabled ? ' is disabled.' : (item.running ? ' is running.' : 'is off.') }}
+            </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<pre>
+    <code clr-code-highlight="language-html">
+    &lt;form #testForm=&quot;ngForm&quot;&gt;
+        &lt;section class=&quot;form-block&quot;&gt;
+            &lt;label&gt;Checkboxes&lt;/label&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Default/Stacked checkbox group&lt;/label&gt;
+                &lt;div class=&quot;checkbox&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_1&quot;&gt;
+                    &lt;label for=&quot;checkrads_1&quot;&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_2&quot; checked&gt;
+                    &lt;label for=&quot;checkrads_2&quot;&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_3&quot; disabled&gt;
+                    &lt;label for=&quot;checkrads_3&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_4&quot; disabled checked&gt;
+                    &lt;label for=&quot;checkrads_4&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Inline checkbox group&lt;/label&gt;
+                &lt;div class=&quot;checkbox-inline&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_5&quot;&gt;
+                    &lt;label for=&quot;checkrads_5&quot;&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_6&quot; checked&gt;
+                    &lt;label for=&quot;checkrads_6&quot;&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_7&quot; disabled&gt;
+                    &lt;label for=&quot;checkrads_7&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_8&quot; disabled checked&gt;
+                    &lt;label for=&quot;checkrads_8&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Indeterminate Checkbox&lt;/label&gt;
+                &lt;div&gt;
+                    &lt;clr-checkbox type=&quot;checkbox&quot; id=&quot;checkbox_9&quot; [(clrIndeterminate)]=&quot;indeterminateState&quot;&gt;
+                        Clarity indeterminate checkbox
+                    &lt;/clr-checkbox&gt;
+                    &lt;div&gt;
+                        &lt;button class=&quot;btn btn-sm&quot; (click)=&quot;onToggleIndeterminateState($event)&quot; type=&quot;button&quot;&gt;
+                            Toggle Indeterminate State
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&quot;checkbox&quot;
+                           id=&quot;checkrads_10&quot;
+                           [indeterminate]=&quot;nativeIndeterminateState&quot;&gt;
+                    &lt;label for=&quot;checkrads_10&quot;&gt;Native indeterminate checkbox&lt;/label&gt;
+                    &lt;div&gt;
+                        &lt;b&gt;NOTE:&lt;/b&gt; Native checkbox elements must set indeterminate state with JavaScript.
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Clarity Checkbox&lt;/label&gt;
+                &lt;clr-checkbox
+                    type=&quot;checkbox&quot; id=&quot;formCheckbox&quot;
+                    name=&quot;active&quot;
+                    [(ngModel)]=&quot;active&quot;&gt;
+                    Clarity Checkbox
+                &lt;/clr-checkbox&gt;
+                &lt;label&gt;
+                    State: {{ "{{ active \}\}" }}
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Disabled Clarity Checkbox&lt;/label&gt;
+                &lt;clr-checkbox
+                    type=&quot;checkbox&quot; id=&quot;formCheckboxDisabled&quot;
+                    [clrDisabled]=&quot;true&quot;&gt;
+                    Clarity Checkbox
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;
+
+    &lt;form #form=&quot;ngForm&quot; novalidate&gt;
+        &lt;section class=&quot;form-block&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;With ngForm &amp; ngModel&lt;/label&gt;
+                &lt;clr-checkbox
+                        name=&quot;termsCheckbox&quot;
+                        id=&quot;checkrads_11&quot;
+                        [clrInline]=&quot;true&quot;
+                        [(ngModel)]=&quot;termsAgreement&quot;&gt;
+                    I agree to the terms and conditions. {{ "{{ form.value | json \}\}" }}
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;
+
+    &lt;form&gt;
+        &lt;section class=&quot;form-block&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;With a list of objects&lt;/label&gt;
+                &lt;clr-checkbox *ngFor=&quot;let item of list&quot;
+                              [(clrChecked)]=&quot;item.running&quot;
+                              [clrDisabled]=&quot;item.disabled&quot;&gt;
+                    {{ "{{ item.ip \}\} \{\{ item.disabled ? ' Is disabled' : '' \}\}" }}
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;
+    </code>
+</pre>

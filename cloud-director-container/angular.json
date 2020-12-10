@@ -27,14 +27,19 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css",
+              "node_modules/clarity-icons/clarity-icons.min.css",
+              "node_modules/clarity-ui/clarity-ui.min.css",
               "src/styles.scss"
             ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js",
-              "node_modules/systemjs/dist/system.src.js"
+              "node_modules/systemjs/dist/system.src.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.min.js"
+            ],
+            "lazyModules": [
+              "src/plugins/app/app.module"
             ]
           },
           "configurations": {
@@ -135,6 +140,35 @@
             "extractLicenses": false,
             "vendorChunk": false,
             "buildOptimizer": false
+          }
+        },
+        "build-clr-demo": {
+          "builder": "@vcd/plugin-builders:plugin-builder",
+          "options": {
+            "modulePath": "src/plugins/app/app.module.ts#AppModule",
+            "outputPath": "dist/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "./src/plugins/app/public",
+                "output": "/"
+              }
+            ],
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "extractCss": false,
+            "namedChunks": false,
+            "aot": false,
+            "extractLicenses": false,
+            "vendorChunk": false,
+            "buildOptimizer": false,
+            "lazyModules": [
+              "src/plugins/app/alert/alert.demo.module.ts"
+            ]
           }
         }
       }

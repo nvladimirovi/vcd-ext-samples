@@ -1,0 +1,14 @@
+{
+    "urn": "vmware:vcloud:clarity:0.10.15:demo",
+    "name": "Clarity v0.10.15 Demo",
+    "containerVersion": "9.1.0",
+    "version": "2.0.1",
+    "scope": ["service-provider"],
+    "permissions": [],
+    "description": "Clarity v0.10.15 Demo",
+    "vendor": "VMware",
+    "license": "BSD-2-Clause",
+    "link": "http://www.vmware.com",
+    "module": "AppModule",
+    "route": "clarity-demo-0.10.15"
+}
